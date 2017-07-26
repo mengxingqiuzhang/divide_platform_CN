@@ -1,7 +1,6 @@
 var findTB = new Vue({
     el: '#findop',
     data: {
-        quantity: 1,
         baseClass: 'btn',
         statusClass: 'btn-primary',
         isDisable: false
@@ -10,15 +9,16 @@ var findTB = new Vue({
         searchData: function () {
             findTB.isDisable = true;
 
-            this.$http.get('/data/find?wordq=' + this.quantity).then(
+            this.$http.get('/analysis/getRes').then(
                 function (response) {
-                    console.log('response!!!!!!!')
+                    console.log('response!')
                     listVM.items = response.data;
                     findTB.isDisable = false;
                 },
                 function (err) {
                     findTB.statusClass = 'btn-danger';
                     findTB.isDisable = false;
+                    console.log('error!');
                     console.log(err);
                 }
             )

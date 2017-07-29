@@ -11,7 +11,10 @@
     <!-- Bootstrap -->
     <link href="http://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.css">
+    
+    <!-- Css -->
     <link rel='stylesheet' href='/stylesheets/datastyle.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   
   <body>
@@ -20,12 +23,12 @@
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
           </button>
-          <a class="navbar-brand" href="/">xxx</a>
+          <a class="navbar-brand" href="/">Divide</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/data">data</a></li>
-            <li><a href="/analysis">analysis</a></li>
+            <li class="active"><a href="/analysis">analysis</a></li>
             <li><a href="#">xxx</a></li>
             <li><a href="#">xxx</a></li>
           </ul>
@@ -33,35 +36,37 @@
       </div>
     </div>
 
-  	<header>
-    	<h1><%= title %></h1>
-    </header>
-
     <form id='editfile' method='post' action='/upload' enctype='multipart/form-data'>
-    <input name="avatar" id='upfile' type='file'/>
-    <input type='submit' value='提交'/>
+      <input name="avatar" id='upfile' type='file'/>
+      <br/>
+      <button type='submit' class="btn btn-primary">提交文件</button>
     </form>
+   
+    <br/>
+    <br/>
 
     <form id="findop">
-        <button type="submit" v-bind:class="[baseClass, statusClass]" v-bind:disabled="isDisable" v-on:click="searchData">查询</button>
+        <button type="submit" v-bind:class="[baseClass, statusClass]" v-bind:disabled="isDisable" v-on:click="searchData">开始分析！</button>
     </form>
-
-    <a herf='/analysis/doCal'> gogogog </a>
 
     <div class="table-responsive">
         <table id="findtable" class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th>序号</th>
                     <th>词语</th>
-                    <th>置信度</th>
+                    <th>词频</th>
+                    <th>左右熵</th>
+                    <th>互信息</th>
+                    <th>位置成词概率</th>
                 </tr>
             </thead>
             <tbody>
                 <tr v-for="item in items">
-                    <td>{{ item.num }}</td>
                     <td>{{ item.word }}</td>
-                    <td>{{ item.conf }}</td>
+                    <td>{{ item.freq }}</td>
+                    <td>{{ item.entro }}</td>
+                    <td>{{ item.info }}</td>
+                    <td>{{ item.prob }}</td>
                 </tr>
             </tbody>
         </table>

@@ -40,8 +40,8 @@ if __name__ == "__main__":
     # line = re.sub(u"([一-龠,。]+)([~]+)([一-龠，。]+)", "\\1\\3", line)
     # line = re.sub(u"([a-zA-z0-9]+)([\s]+)([a-zA-Z0-9一-龠，。,]+)", "\\1\\3", line)
 
-    corpus_file = codecs.open("111.txt", "r", ENCODING_UTF_8)
-    f = codecs.open("111.temp.txt", "w", ENCODING_UTF_8)
+    corpus_file = codecs.open("tmp/avator.txt", "r", ENCODING_UTF_8)
+    f = codecs.open("tmp/avator.temp.txt", "w", ENCODING_UTF_8)
     for line in corpus_file.readlines():
         if len(line) < 4:
             continue

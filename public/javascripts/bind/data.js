@@ -1,7 +1,7 @@
 var findTB = new Vue({
     el: '#findop',
     data: {
-        quantity: 1,
+        quantity: '',
         baseClass: 'btn',
         statusClass: 'btn-primary',
         isDisable: false
